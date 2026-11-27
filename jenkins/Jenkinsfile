@@ -1,9 +1,11 @@
 pipeline {
    agent any
-   tools {
-        jdk 'JAVA_21'
-    }
     stages {
+       stage('Check version'){
+         steps{
+            sh 'java -version'
+         }
+       }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
